@@ -9,7 +9,7 @@
 
 fileName = input('Введите имя файла:')
 
-myFile = open(fileName, 'r')  # TODO раскомментить ввод имени файла и вставить переменную
+myFile = open(fileName, 'r')
 
 workString = (myFile.read().lower())  # Приведение к одному регистру
 
