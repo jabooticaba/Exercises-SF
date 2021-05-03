@@ -3,5 +3,5 @@ from pet_constructor import Cat
 cat1 = Cat(2, 'мальчик', 'Барон')
 cat2 = Cat(2, 'мальчик', 'Сэм')
 
-cat1.print_()
-cat2.print_()
+print(cat1.get_a())
+print(cat2.get_a())
