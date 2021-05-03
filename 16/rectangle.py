@@ -13,7 +13,7 @@ class Square:
     def get_area_square(self):
         return self.a ** 2
     
-class Sircle:
+class Circle:
     def __init__(self, a):
         self.a = a
     def get_area(self):
