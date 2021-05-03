@@ -1,4 +1,4 @@
-from rectangle import Rectangle, Square, Sircle
+from rectangle import Rectangle, Square, Circle
 
 
 
@@ -23,6 +23,6 @@ for figure in figures:
         print(figure.get_area())
         
         
-sirc = Sircle(5)
+sirc = Circle(5)
 
 print(sirc.get_area())
