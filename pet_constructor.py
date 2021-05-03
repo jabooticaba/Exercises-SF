@@ -4,6 +4,6 @@ class Cat:
         self.gender = gender
         self.name = name
         
-    def print_(self):
-        print(f'Имя: {self.name} \nпол: {self.gender} \nвозраст: {self.age}')
+    def get_a(self):
+        return "Имя: {0} \nпол: {1} \nвозраст: {2}".format(self.name, self.gender, self.age)
         
