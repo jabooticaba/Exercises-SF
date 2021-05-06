@@ -57,25 +57,35 @@ def id_generator():
         yield i
 
 
-gen = id_generator()
+
 
 
 class Employee:
-    def __init__(self, name, id =''):
+    gen = id_generator()
+    def __init__(self, name):
         self.name = name
-        self.id = id
+        self.id = next(gen)
 
 
 class Volunteer(Employee):
     def __init__(self, name, city, status):
         self.city = city
         self.status = status
-        Employee.__init__(self, name, "E" + str(next(gen)))
+        Employee.__init__(self, name)
 
     def display(self):
-        return f'{self.name}, г.{self.city}, статус "{self.status}"'
-
+        return f'{self.name}, г.{self.city}, статус "{self.status}", {self.id}'
+    
+class Worker(Employee):
+    def __init__(self, name, city, status):
+        self.city = city
+        self.status = status
+        Employee.__init__(self, name)
 
 vol = Volunteer("Иван Петров", "Москва", "Наставник")
+vol2 = Volunteer("Петр Иванов", "Москва", "Падаван")
+work = Worker("Семён Семёнов", "Новосибирск", "Рабочий")
 
 print(vol.display())
+print(vol2.display())
+print(work.id())
