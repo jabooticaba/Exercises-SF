@@ -19,7 +19,7 @@ for char in x:
         number.append(char)
         append_flag = True
         
-    elif char == post and char != number[-1] and char != "#":
+    elif char == post and char != number[-1] and char != "#" or post2 == "#":
         number.append(char)
         append_flag = True
         
