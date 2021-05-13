@@ -22,7 +22,7 @@ def search_binary(list, targ, left_half, right_half):
             x = 1
             while list[middle] == list[middle-x]:
                 x += 1
-            return middle-x+1, middle-x+2
+            return f'Позиция предыдущего элемента в списке: {middle-x+1}'  # f'Позиция следующего элемента в списке: {middle-x+2}'
 
     elif targ < list[middle]:
         return search_binary(list, targ, left_half, middle - 1)
@@ -35,6 +35,8 @@ def input_val():
         raw_string = input("Введите целые числа через пробел: ")
         try:
             base_list = list(map(int, raw_string.split()))
+            if len(base_list) == 0:
+                raise ValueError
         except ValueError:
             print("Неверный формат данных")
         else:
@@ -45,7 +47,7 @@ def input_val():
         try:
             target = int(digit)
         except ValueError:
-            print('"{0}" не является числом'.format (digit))
+            print('"{0}" не является целым числом'.format (digit))
         else:
             break
     formatted_list = base_list + [target]    
