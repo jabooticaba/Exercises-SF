@@ -15,14 +15,14 @@ def search_binary(list, targ, left_half, right_half):
     middle = left_half + (right_half - left_half) // 2
     if list[middle] == targ:
         if list[0] == targ:
-            return f'введённое число - наименьшее в списке, его индекс: 0'
+            return f'Введённое число - наименьшее в списке'
         if list[-1] == targ:
-            return f'{middle - 1}, введённое число - наибольшее в списке'
+            return f'Введённое число - наибольшее в списке'
         else:
             x = 1
             while list[middle] == list[middle-x]:
                 x += 1
-            return middle-x, middle-x+1
+            return middle-x+1, middle-x+2
 
     elif targ < list[middle]:
         return search_binary(list, targ, left_half, middle - 1)
