@@ -1,11 +1,11 @@
 def ranging(x):
-    """Сортировка вставками, удаление повторяющихся элементов"""
+    """Сортировка вставками"""
     for i in range(len(x)):
         for j in range(len(x) - i - 1):
             if x[j] > x[j + 1]:
                 x[j], x[j + 1] = x[j + 1], x[j]
-            if x[j] == x[j+1]:
-                x.pop(j)
+#             if x[j] == x[j+1]:
+#                 x.pop(j) удаление повторяющихся элементов
     return x
 
 
@@ -21,7 +21,13 @@ def search_binary(list, targ, left_half, right_half):
         if list[-1] == targ:
             return f'{middle - 1}, введённое число - наибольшее в списке'
         else:
-            return middle-1, middle
+            x = 1
+            y = 0
+            while list[middle] <= list[middle-x]:
+                x += 1
+            while list[middle] >= list[middle+y]:
+                y +=1
+            return middle-x, middle-1+y
 
     elif targ < list[middle]:
         return search_binary(list, targ, left_half, middle - 1)
