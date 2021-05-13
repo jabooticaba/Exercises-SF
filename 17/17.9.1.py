@@ -1,4 +1,4 @@
-def ranging2(x):
+def ranging(x):
     for i in range(len(x)):
         for j in range(len(x) - i - 1):
             if x[j] > x[j + 1]:
@@ -28,12 +28,37 @@ def search_binary(list, targ, left_half, right_half):
         return search_binary(list, targ, middle + 1, right_half)
 
     
+def input_val():
+    while type:
+        raw_string = input("Введите целые числа через пробел: ")
+        try:
+            base_list = list(map(int, raw_string.split()))
+        except ValueError:
+            print("Неверный формат данных")
+        else:
+            break
+            
+    while True:
+        digit = input("Введите целое число: ")
+        try:
+            target = int(digit)
+        except ValueError:
+            print('"{0}" не является числом'.format (digit))
+        else:
+            break
+    formatted_list = base_list + [target]    
+    print(search_binary(ranging(formatted_list), target, 0, len(formatted_list)))
+
+input_val()
+
+
+'''    Старый вариант валидации ввода
 try:
     raw_input = '1 2 3 5 6 7'
     target = int(input())
     format_list = list(map(int, raw_input.split())) + [target]  # Преобразование в список, добавление введённого числа
-except Exception as e:
+except Exception as e:  # TypeError
+'''
     print("Введённые числа не соответствуют параметрам задания")
-
 else:
     print(search_binary(ranging2(format_list), target, 0, len(format_list)))
