@@ -58,7 +58,8 @@ try:
     target = int(input())
     format_list = list(map(int, raw_input.split())) + [target]  # Преобразование в список, добавление введённого числа
 except Exception as e:  # TypeError
-'''
+
     print("Введённые числа не соответствуют параметрам задания")
 else:
     print(search_binary(ranging2(format_list), target, 0, len(format_list)))
+'''
