@@ -15,9 +15,9 @@ def search_binary(list, targ, left_half, right_half):
     middle = left_half + (right_half - left_half) // 2
     if list[middle] == targ:
         if list[0] == targ:
-            return f'Введённое число - наименьшее в списке'
+            return f'Введённое число - наименьшее в списке, позиция слелующего элемента в списке: 0'
         if list[-1] == targ:
-            return f'Введённое число - наибольшее в списке'
+            return f'Введённое число - наибольшее в списке, позиция предыдущего элемента в списке: {len(list) - 1}'
         else:
             x = 1
             while list[middle] == list[middle-x]:
