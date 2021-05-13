@@ -1,4 +1,5 @@
 def ranging(x):
+    """Сортировка вставками, удаление повторяющихся элементов"""
     for i in range(len(x)):
         for j in range(len(x) - i - 1):
             if x[j] > x[j + 1]:
