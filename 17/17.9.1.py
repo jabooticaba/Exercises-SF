@@ -22,12 +22,10 @@ def search_binary(list, targ, left_half, right_half):
             return f'{middle - 1}, введённое число - наибольшее в списке'
         else:
             x = 1
-            y = 0
+            y = 1
             while list[middle] <= list[middle-x]:
                 x += 1
-            while list[middle] >= list[middle+y]:
-                y +=1
-            return middle-x, middle-1+y
+            return middle-x, middle  # нужен флаг "-(True)" если в списке был дубликат искомого элемента
 
     elif targ < list[middle]:
         return search_binary(list, targ, left_half, middle - 1)
