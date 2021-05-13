@@ -4,8 +4,6 @@ def ranging(x):
         for j in range(len(x) - i - 1):
             if x[j] > x[j + 1]:
                 x[j], x[j + 1] = x[j + 1], x[j]
-#             if x[j] == x[j+1]:
-#                 x.pop(j) удаление повторяющихся элементов
     return x
 
 
@@ -22,10 +20,9 @@ def search_binary(list, targ, left_half, right_half):
             return f'{middle - 1}, введённое число - наибольшее в списке'
         else:
             x = 1
-            y = 1
-            while list[middle] <= list[middle-x]:
+            while list[middle] == list[middle-x]:
                 x += 1
-            return middle-x, middle  # нужен флаг "-(True)" если в списке был дубликат искомого элемента
+            return middle-x, middle-x+1
 
     elif targ < list[middle]:
         return search_binary(list, targ, left_half, middle - 1)
@@ -55,16 +52,3 @@ def input_val():
     print(search_binary(ranging(formatted_list), target, 0, len(formatted_list)))
 
 input_val()
-
-
-'''    Старый вариант валидации ввода
-try:
-    raw_input = '1 2 3 5 6 7'
-    target = int(input())
-    format_list = list(map(int, raw_input.split())) + [target]  # Преобразование в список, добавление введённого числа
-except Exception as e:  # TypeError
-
-    print("Введённые числа не соответствуют параметрам задания")
-else:
-    print(search_binary(ranging2(format_list), target, 0, len(format_list)))
-'''
