@@ -9,6 +9,7 @@ python = "^3.8"
 pyTelegramBotAPI = "^3.7.9"
 lxml = "^4.6.3"
 beautifulsoup4 = "^4.9.3"
+redis = "^3.5.3"
 
 [tool.poetry.dev-dependencies]
 

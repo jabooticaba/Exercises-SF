@@ -70,6 +70,17 @@ redis = ["redis (>=3.4.1)"]
 
 [[package]]
 category = "main"
+description = "Python client for Redis key-value store"
+name = "redis"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+version = "3.5.3"
+
+[package.extras]
+hiredis = ["hiredis (>=0.1.3)"]
+
+[[package]]
+category = "main"
 description = "Python HTTP for Humans."
 name = "requests"
 optional = false
@@ -109,7 +120,7 @@ secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "cer
 socks = ["PySocks (>=1.5.6,<1.5.7 || >1.5.7,<2.0)"]
 
 [metadata]
-content-hash = "8ff7f5cc6b62f3fc1ad82bb718a403787fb9a727873d709377758b7d7d43083a"
+content-hash = "c6390a5bc38ab20ea74c3b1ef469520d21a20d1bd5bbd7e60697df0e031f51de"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -180,6 +191,10 @@ lxml = [
 ]
 pytelegrambotapi = [
     {file = "pyTelegramBotAPI-3.7.9.tar.gz", hash = "sha256:7774314ff429852d423d5dfebe8fc1011dca93a028f1ccb0c56db6817245b752"},
+]
+redis = [
+    {file = "redis-3.5.3-py2.py3-none-any.whl", hash = "sha256:432b788c4530cfe16d8d943a09d40ca6c16149727e4afe8c2c9d5580c59d9f24"},
+    {file = "redis-3.5.3.tar.gz", hash = "sha256:0e7e0cfca8660dea8b7d5cd8c4f6c5e29e11f31158c0b0ae91a397f00e5a05a2"},
 ]
 requests = [
     {file = "requests-2.25.1-py2.py3-none-any.whl", hash = "sha256:c210084e36a42ae6b9219e00e48287def368a26d03a048ddad7bfee44f75871e"},
