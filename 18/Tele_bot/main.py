@@ -1,8 +1,8 @@
-# pip3 install pyTelegramBotAPI.
+# pip3 install pyTelegramBotAPI
 
 import telebot
  
-TOKEN = "1433434693:AAGSo26QPwf5sBuraSTV4wAjo7JPziIz2"
+TOKEN = "1433434693:AAGSo26QPwf5sBuraSTV4wAjo7JPziIz2Vk"
  
 bot = telebot.TeleBot(TOKEN)
 # Чтобы запустить бота, нужно воспользоваться методом polling.
