@@ -8,11 +8,40 @@ TOKEN = '1761778081:AAGRrFE1JeTeovQwNtA-eB7hW1HWbNJ9sa8'
 bot = telebot.TeleBot(TOKEN)
 
 
-keys = {'биткоин': 'BTC', 'эфириум':'ETH', 'доллар':'USD',}
+keys = {'биткоин': 'BTC', 'эфириум': 'ETH', 'доллар': 'USD',}
 
 
-class ConvertionException:
+class ConvertionException(Exception):
     pass
+
+class CryptoConverter:
+    @staticmethod
+    def convert(quote: str, base: str, amount: str):
+
+        if quote == base:
+            raise ConvertionException(f'Невозможно перевести одинаковые валюты {base}.')
+
+        try:
+            quote_ticker = keys[quote]
+        except KeyError:
+            raise ConvertionException(f'Не удалось обработать валюту {quote}')
+
+        try:
+            base_ticker = keys[base]
+        except KeyError:
+            raise ConvertionException(f'Не удалось обработать валюту {base}')
+
+        try:
+            amount = float(amount)
+        except ValueError:
+            raise ConvertionException(f'Не удалось обработать количество {amount}')
+
+        r = requests.get(f'https://min-api.cryptocompare.com/data/price?fsym={quote_ticker}&tsyms={base_ticker}')
+        total_base = json.loads(r.content)[keys[base]]
+
+        return total_base
+
+
 
 
 
@@ -34,32 +63,11 @@ def values(message: telebot.types.Message):
 def convert(message: telebot.types.Message):
     values = message.text.split(' ')
 
-    if len(values) > 3:
-        raise ConvertionException('Слишком много параметров')
+    if len(values) != 3:
+        raise ConvertionException('Неправильное количество параметров')
 
     quote, base, amount = values
-
-    if quote == base:
-        raise ConvertionException(f'Невозможно перевести одинаковые валюты {base}.')
-
-    try:
-        quote_ticker = keys[quote]
-    except KeyError:
-        raise ConvertionException(f'Не удалось обработать валюту {quote}')
-
-    try:
-        base_ticker = keys[base]
-    except KeyError:
-        raise ConvertionException(f'Не удалось обработать валюту {base}')
-
-    try:
-        amount = float(amount)
-    except ValueError:
-        raise ConvertionException(f'Не удалось обработать количество {amount}')
-
-
-    r = requests.get(f'https://min-api.cryptocompare.com/data/price?fsym={base_ticker}&tsyms={quote_ticker}')
-    total_base = json.loads(r.content)[keys[base]]
+    total_base = CryptoConverter.convert(quote, base, amount)
     text = f'Цена {amount} {quote} в {base} - {total_base}'
     bot.send_message(message.chat.id, text)
 
