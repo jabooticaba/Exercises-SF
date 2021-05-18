@@ -28,11 +28,11 @@ def values(message: telebot.types.Message):
 def convert(message: telebot.types.Message):
     try:
         values = message.text.split(' ')
-        values[2] = values[2].replace(',', ".")  # Замена запятой на точку для обработки <float>
-        print(values)
+
         if len(values) != 3:
             raise ConvertionException('Неправильное количество параметров')
 
+        values[2] = values[2].replace(',', ".")  # Замена запятой на точку для обработки <float>
         base, quote, amount = values
         total_base = CurrencyConverter.get_price(base, quote, amount)
     except ConvertionException as e:
@@ -40,7 +40,7 @@ def convert(message: telebot.types.Message):
     except Exception as e:
         bot.reply_to(message, f'Не удалось обработать команду.\n{e}')
     else:
-        text = f'Цена {amount} {base} в {quote} - {total_base * float(amount)}'
+        text = f'Цена {amount} {base} в {quote} - {round((total_base * float(amount)), 5)}'
         bot.send_message(message.chat.id, text)
 
 bot.polling()
