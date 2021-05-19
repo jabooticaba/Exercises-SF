@@ -64,7 +64,7 @@ class Employee:
     gen = id_generator()
     def __init__(self, name):
         self.name = name
-        self.id = next(gen)
+        self.id = next(self.gen)
 
 
 class Volunteer(Employee):
@@ -88,4 +88,4 @@ work = Worker("Семён Семёнов", "Новосибирск", "Рабоч
 
 print(vol.display())
 print(vol2.display())
-print(work.id())
+print(work.id)
